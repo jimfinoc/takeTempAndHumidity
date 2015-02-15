@@ -46,12 +46,12 @@ class HTU21D(object):
         divsor = 0x988000
         for i in range(0, 16):
             if( remainder & 1 << (23 - i) ):
-            remainder ^= divsor
-            divsor = divsor >> 1
-        if remainder == 0:
-            return True
-        else:
-            return False
+                remainder ^= divsor
+                divsor = divsor >> 1
+            if remainder == 0:
+                return True
+            else:
+                return False
     def read_tmperature(self):
         self.dev.write(CMD_READ_TEMP_NOHOLD) #measure temp
         time.sleep(.1)
