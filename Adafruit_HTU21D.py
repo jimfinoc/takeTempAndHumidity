@@ -19,19 +19,18 @@ class HTU21D():
     READ_USER_REG = 0xE7
     # Constructor
     def __init__(self):
-		self.i2c = Adafruit_I2C(self.address)
-	def readUserRegister(self):
-		"Read the user register byte"
-		return self.i2c.readU8(self.READ_USER_REG)
-	def readTemperatureData(self):
-		"Read 3 temperature bytes from the sensor"
-		# value[0], value[1]: Raw temperature data
-		# value[2]: CRC
-		value = self.i2c.readList(self.TRIGGER_TEMP_MEASURE_HOLD, 3)
-		
-		# CRC Check
-		if not self.crc8check(value):
-			return -255
+        self.i2c = Adafruit_I2C(self.address)
+    def readUserRegister(self):
+        "Read the user register byte"
+        return self.i2c.readU8(self.READ_USER_REG)
+    def readTemperatureData(self):
+        "Read 3 temperature bytes from the sensor"
+        # value[0], value[1]: Raw temperature data
+        # value[2]: CRC
+        value = self.i2c.readList(self.TRIGGER_TEMP_MEASURE_HOLD, 3)
+        # CRC Check
+        if not self.crc8check(value):
+            return -255
 			
 		rawTempData = ( value[0] << 8 ) + value[1]
 		
