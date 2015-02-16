@@ -14,11 +14,11 @@ class HTU21D():
     i2c = None
 	# HTU21D Address
     address = 0x40
-	TRIGGER_TEMP_MEASURE_HOLD = 0xE3
-	TRIGGER_HUMD_MEASURE_HOLD = 0xE5
-	READ_USER_REG = 0xE7
-	# Constructor
-	def __init__(self):
+    TRIGGER_TEMP_MEASURE_HOLD = 0xE3
+    TRIGGER_HUMD_MEASURE_HOLD = 0xE5
+    READ_USER_REG = 0xE7
+    # Constructor
+    def __init__(self):
 		self.i2c = Adafruit_I2C(self.address)
 	def readUserRegister(self):
 		"Read the user register byte"
