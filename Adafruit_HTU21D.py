@@ -61,9 +61,9 @@ class HTU21D():
         divsor = 0x988000
         for i in range(0, 16):
             if( remainder & 1 << (23 - i) ):
-            remainder ^= divsor
-            divsor = divsor >> 1
-        if remainder == 0:
-            return True
-        else:
-            return False
+                remainder ^= divsor
+                divsor = divsor >> 1
+            if remainder == 0:
+                return True
+            else:
+                return False
