@@ -10,25 +10,19 @@ from Adafruit_I2C import Adafruit_I2C
 # It has been reported that an I2C address issue was seen on a Pi.
 # ===========================================================================
 
-class HTU21D:
-	i2c = None
-  
+class HTU21D():
+    i2c = None
 	# HTU21D Address
 	address = 0x40
-	
-	# Commands
 	TRIGGER_TEMP_MEASURE_HOLD = 0xE3
 	TRIGGER_HUMD_MEASURE_HOLD = 0xE5
 	READ_USER_REG = 0xE7
-
 	# Constructor
 	def __init__(self):
 		self.i2c = Adafruit_I2C(self.address)
-		
 	def readUserRegister(self):
 		"Read the user register byte"
 		return self.i2c.readU8(self.READ_USER_REG)
-	
 	def readTemperatureData(self):
 		"Read 3 temperature bytes from the sensor"
 		# value[0], value[1]: Raw temperature data

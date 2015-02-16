@@ -28,7 +28,7 @@ class i2c(object):
 
 class HTU21D(object):
     def __init__(self):
-        self.dev = i2c(HTU21D_ADDR, 0) #HTU21D 0x40, bus 1
+        self.dev = i2c(HTU21D_ADDR, 1) #HTU21D 0x40, bus 1
         self.dev.write(CMD_SOFT_RESET) #soft reset
         time.sleep(.1)
     def ctemp(self, sensorTemp):
