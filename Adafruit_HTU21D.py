@@ -13,7 +13,7 @@ from Adafruit_I2C import Adafruit_I2C
 class HTU21D():
     i2c = None
 	# HTU21D Address
-	address = 0x40
+    address = 0x40
 	TRIGGER_TEMP_MEASURE_HOLD = 0xE3
 	TRIGGER_HUMD_MEASURE_HOLD = 0xE5
 	READ_USER_REG = 0xE7
