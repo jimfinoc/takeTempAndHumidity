@@ -66,6 +66,8 @@ class HTU21D(object):
         self.dev.write(CMD_READ_HUM_NOHOLD) #measure humidity
         time.sleep(.1)
         data = self.dev.read(3)
+        print "data"
+        print data
         buf = array.array('B', data)
         if self.crc8check(buf):
             humid = (buf[0] << 8 | buf [1]) & 0xFFFC
