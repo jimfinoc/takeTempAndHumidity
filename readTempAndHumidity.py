@@ -56,7 +56,11 @@ class HTU21D(object):
         self.dev.write(CMD_READ_TEMP_HOLD) #measure temp
         time.sleep(.1)
         data = self.dev.read(3)
+        print "temp data"
+        print data
         buf = array.array('B', data)
+        print "temp buf"
+        print data
         if self.crc8check(buf):
             temp = (buf[0] << 8 | buf [1]) & 0xFFFC
             return self.ctemp(temp)
@@ -66,7 +70,7 @@ class HTU21D(object):
         self.dev.write(CMD_READ_HUM_NOHOLD) #measure humidity
         time.sleep(.1)
         data = self.dev.read(3)
-        print "data"
+        print "humidity data"
         print data
         buf = array.array('B', data)
         if self.crc8check(buf):
