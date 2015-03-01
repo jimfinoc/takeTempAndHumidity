@@ -56,11 +56,11 @@ class HTU21D(object):
         self.dev.write(CMD_READ_TEMP_HOLD) #measure temp
         time.sleep(.2)
         data = self.dev.read(3)
-        print "temp data"
-        print data
+#        print "temp data"
+#        print data
         buf = array.array('B', data)
-        print "temp buf"
-        print data
+#        print "temp buf"
+#        print data
         if self.crc8check(buf):
             temp = (buf[0] << 8 | buf [1]) & 0xFFFC
             return self.ctemp(temp)
@@ -70,8 +70,8 @@ class HTU21D(object):
         self.dev.write(CMD_READ_HUM_NOHOLD) #measure humidity
         time.sleep(.1)
         data = self.dev.read(3)
-        print "humidity data"
-        print data
+#        print "humidity data"
+#        print data
         buf = array.array('B', data)
         if self.crc8check(buf):
             humid = (buf[0] << 8 | buf [1]) & 0xFFFC
@@ -84,9 +84,3 @@ if __name__ == "__main__":
     print "Temp:", obj.read_temperature(), "C"
     print "Humid:", obj.read_humidity(), "% rH"
 
-print
-HTU = HTU21D()
-print "read_temperature"
-HTU.read_temperature()
-print "read_humiditiy"
-HTU.read_humidity()
