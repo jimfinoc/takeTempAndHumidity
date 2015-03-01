@@ -53,7 +53,7 @@ class HTU21D(object):
             else:
                 return False
     def read_temperature(self):
-        self.dev.write(CMD_READ_TEMP_NOHOLD) #measure temp
+        self.dev.write(CMD_READ_TEMP_HOLD) #measure temp
         time.sleep(.1)
         data = self.dev.read(3)
         buf = array.array('B', data)
@@ -76,3 +76,9 @@ class HTU21D(object):
             obj = HTU21D()
             print "Temp:", obj.read_temperature(), "C"
             print "Humid:", obj.read_humidity(), "% rH"
+
+HTU = HTU21D()
+print "read_temperature"
+HTU.read_temperature()
+print "read_humiditiy"
+HTU.read_humidity()
